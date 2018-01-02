@@ -31,7 +31,7 @@
 
             @endif
             
-        <h3>Leave a Reply</h3>
+        <h3>Leave a Comment</h3>
 
         @include ('comments.form')
 

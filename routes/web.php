@@ -27,9 +27,22 @@ Route::get('/', function(){
 
 Route::post('/comments/add', function (){
 
+
+	request()->validate(['body' => 'required|min:2']);
+
 	$comment = new App\Comment(['body' => request('body')]);
 
 	$comment->parent_id = request('parent_id', null);
+
+	if ($comment->parent_id == null)
+		$comment->nesting = 0;
+	else
+		$comment->nesting = App\Comment::find($comment->parent_id)['nesting'] + 1;
+
+	if ($comment->nesting > 5)
+	{
+		return back()->withErrors('Maximum nesting can be only 5');
+	}
 
 	$comment->save();
 
