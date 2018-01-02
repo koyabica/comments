@@ -19,6 +19,8 @@ class CreateCommentsTable extends Migration
             
             $table->integer('parent_id')->index()->nullable();
 
+            $table->integer('nesting')->nullable();
+
             $table->text('body');
 
             $table->timestamps();
