@@ -1,5 +1,5 @@
 # comments
-Test task for Interview.
+Test task for the interview.
 
 Laravel.
 Create simple app with option to add comments.
